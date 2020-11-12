@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.oskari.demo</groupId>
     <artifactId>server-extension</artifactId>
-    <version>1.4.1</version>
+<!--    <version>1.1</version>-->
+    <version>1.1</version>
     <packaging>pom</packaging>
     <name>demo.oskari.org</name>
 
     <properties>
-        <oskari.version>2.0.1</oskari.version>
+        <oskari.version>1.55.2</oskari.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
     </properties>
@@ -26,13 +27,20 @@
             <name>Oskari.org snapshot repository</name>
             <url>https://oskari.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>osgeo</id>
+            <name>OSGeo Release Repository</name>
+            <url>https://repo.osgeo.org/repository/release/</url>
+            <snapshots><enabled>false</enabled></snapshots>
+            <releases><enabled>true</enabled></releases>
+        </repository>
     </repositories>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.oskari</groupId>
-                <artifactId>oskari-server</artifactId>
+                <groupId>fi.nls.oskari</groupId>
+                <artifactId>oskari-parent</artifactId>
                 <version>${oskari.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -45,7 +53,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -54,7 +62,7 @@
 
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.2.2</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
